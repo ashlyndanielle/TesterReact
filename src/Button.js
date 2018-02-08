@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 export default class Button extends Component {
   render() {
 
+    var color = this.props.color || "black";
     var buttonBackground = {
-      backgroundColor: this.props.color
+      backgroundColor: color
     }
 
     return (

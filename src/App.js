@@ -16,16 +16,8 @@ class App extends Component {
   }
 
   render() {
-
-    const changeColor = () => {
-      var newPosition = this.state.position;
-      this.state.position === 5 ? newPosition = 0 : newPosition++;
-      this.setState({
-        position: newPosition
-      })
-    }
     
-    var buttonName = "I am a button!";
+    var buttonName = "I don't do anything";
 
     return (
       <div className="App">
@@ -38,7 +30,6 @@ class App extends Component {
         </p>
         <Button 
           text={buttonName}
-          handleClick={changeColor}
           color={this.state.backgroundColors[this.state.position]}
         />
         <PlayingWithState />
