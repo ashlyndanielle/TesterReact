@@ -29,7 +29,7 @@
 
 button {
   padding: 10px;
-  background: black;
+  background: DarkCyan;
   color: white;
   text-transform: uppercase;
   border-style: none;
@@ -91,6 +91,9 @@ button:focus:before {
   box-shadow: none;
 }
 
+.input-wrapper {
+  display: inline-block;
+}
 input {
   border: none;
   outline: none;
@@ -98,8 +101,16 @@ input {
   font-size: 18px;
   padding: 5px 0 5px 0;
   text-align: center;
+  margin: 20px;
 }
 
+
+
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
 
 
 

@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      backgroundColors: ["black", "purple", "blue", "green", "aliceblue"],
+      backgroundColors: ["DarkCyan", "black", "purple", "blue", "green", "aliceblue"],
       position: 0
     }
   }
