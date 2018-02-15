@@ -23,12 +23,13 @@ class HoverBox extends Component {
 
     const styles = {
       box: {
-        width: '100px',
-        height: '100px',
+        width: '50px',
+        height: '50px',
         borderRadius: '20px'
       },
       in: {
-        backgroundColor: 'lightcyan'
+        backgroundColor: 'BurlyWood',
+        boxShadow: '0px 0px 3px 1px rgba(0,0,0,0.2)'
       },
       out: {
         backgroundColor: 'darkcyan'
@@ -36,7 +37,7 @@ class HoverBox extends Component {
     };
 
     return (
-      <div align="center" style={{marginTop: '40px'}}>
+      <div align="center" style={{marginTop: '20px'}}>
         <div
           style={ {...styles.box, ...styles[this.state.boxState]} } 
           onMouseEnter={ this.changeColor }

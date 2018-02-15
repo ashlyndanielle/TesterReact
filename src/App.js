@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Button from './Button.js';
 import PlayingWithState from './PlayingWithState/PlayingWithState.js';
+import PlayingWithProps from './PlayingWithProps/PlayingWithProps.js';
 
 class App extends Component {
   constructor(props) {
@@ -21,10 +21,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
         <p className="App-intro">
           Second Round
         </p>
@@ -33,6 +29,7 @@ class App extends Component {
           color={this.state.backgroundColors[this.state.position]}
         />
         <PlayingWithState />
+        <PlayingWithProps />
       </div>
     );
   }
