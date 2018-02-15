@@ -37,7 +37,7 @@ class HoverBox extends Component {
     };
 
     return (
-      <div align="center" style={{marginTop: '20px'}}>
+      <div className="container" align="center" style={{marginTop: '20px'}}>
         <div
           style={ {...styles.box, ...styles[this.state.boxState]} } 
           onMouseEnter={ this.changeColor }

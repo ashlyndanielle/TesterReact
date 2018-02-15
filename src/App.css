@@ -1,33 +1,50 @@
 .App {
   text-align: center;
+  background: lightblue;
+  margin: 10px;
+  padding: 10px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
+.main-container {
+  margin: 10px;
   padding: 20px;
-  color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.main-container:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
 }
 
-.App-intro {
-  font-size: large;
+.main-container:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 li {
   list-style: none;
 }
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+.todo-items {
+  width: 25%;
+  margin: 5px 10px;
+}
+
+.relative {
+  position: relative;
+  width: auto;
+}
 
 .clickable {
   cursor: pointer;
+  text-align: center;
+  width: auto;
 }
 
 button {
@@ -107,8 +124,22 @@ input {
   margin: 20px;
 }
 
-
-
+.exit-button:hover:before {
+  content: 'x';
+  color: white;
+  /* display: inline-block; */
+  position: absolute;
+  top: 4px;
+  left: 43px;
+  margin-right: 5px;
+  font-size: 7px;
+  line-height: 10px;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  text-align: center;
+  background: red;
+}
 
 .flex-center {
   display: flex;

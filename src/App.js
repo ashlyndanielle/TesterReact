@@ -3,7 +3,7 @@ import './App.css';
 
 import Button from './Button.js';
 import PlayingWithState from './PlayingWithState/PlayingWithState.js';
-import PlayingWithProps from './PlayingWithProps/PlayingWithProps.js';
+import Todo from './PlayingWithProps/Todo.js';
 
 class App extends Component {
   constructor(props) {
@@ -21,15 +21,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <p className="App-intro">
-          Second Round
-        </p>
+        <h2>Second Round</h2>
         <Button 
           text={buttonName}
           color={this.state.backgroundColors[this.state.position]}
         />
         <PlayingWithState />
-        <PlayingWithProps />
+        <Todo />
       </div>
     );
   }

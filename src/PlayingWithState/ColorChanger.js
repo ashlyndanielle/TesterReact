@@ -32,13 +32,13 @@ class ColorChanger extends Component {
     }, 1000)
 
     return (
-      <div>
+      <div className="container">
         <Button
           text="Look at my State Change" 
           handleClick={this.showState}
           color={this.state.backgroundColors[this.state.position]}
         />
-        <h2>Seconds since component has rendered: {this.state.count} </h2>
+        <h4>Seconds since component has rendered: {this.state.count} </h4>
       </div>
     );
   }

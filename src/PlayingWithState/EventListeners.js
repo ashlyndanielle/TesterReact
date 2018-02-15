@@ -35,7 +35,7 @@ class EventListeners extends Component {
     }
 
     return (
-      <div>
+      <div className="container">
         <Input 
           onChange={updateUsername}
           placeholder="username"

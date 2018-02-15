@@ -5,7 +5,7 @@ import HoverBox from './HoverBox.js';
 
 const PlayingWithState = () => {
   return (
-    <div>
+    <div className="main-container">
       <ColorChanger />
       <EventListeners />
       <HoverBox />
