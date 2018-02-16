@@ -41,7 +41,7 @@ class Todo extends Component {
   }
   moveToDone = item => {
     const inProgress = this.state.inProgress;
-    const itemIndex = this.state.inProgress.indexOf(item.inProgress);
+    const itemIndex = this.state.inProgress.indexOf(item.chore);
     const done = inProgress.splice(itemIndex, 1)
     this.setState({
       inProgress,
