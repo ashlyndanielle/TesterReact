@@ -25,10 +25,11 @@ class HoverBox extends Component {
       box: {
         width: '50px',
         height: '50px',
-        borderRadius: '20px'
+        borderRadius: '20px',
+        margin: '0 40px'
       },
       in: {
-        backgroundColor: 'BurlyWood',
+        backgroundColor: 'gray',
         boxShadow: '0px 0px 3px 1px rgba(0,0,0,0.2)'
       },
       out: {
@@ -37,7 +38,22 @@ class HoverBox extends Component {
     };
 
     return (
-      <div className="container" align="center" style={{marginTop: '20px'}}>
+      <div className="container flex-center" align="center" style={{marginTop: '20px'}}>
+        <div
+          style={ {...styles.box, ...styles[this.state.boxState]} } 
+          onMouseEnter={ this.changeColor }
+          onMouseLeave={ this.resetColor }
+        ></div>
+        <div
+          style={ {...styles.box, ...styles[this.state.boxState]} } 
+          onMouseEnter={ this.changeColor }
+          onMouseLeave={ this.resetColor }
+        ></div>
+        <div
+          style={ {...styles.box, ...styles[this.state.boxState]} } 
+          onMouseEnter={ this.changeColor }
+          onMouseLeave={ this.resetColor }
+        ></div>
         <div
           style={ {...styles.box, ...styles[this.state.boxState]} } 
           onMouseEnter={ this.changeColor }

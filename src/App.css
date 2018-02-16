@@ -36,15 +36,41 @@ ul {
   margin: 5px 10px;
 }
 
-.relative {
+.tasks {
   position: relative;
   width: auto;
+  height: 100px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  line-height: 100px;
+  color: white;
+}
+
+.hover {
+  border: 1px dashed rgba(0, 0, 0, 0.1);
 }
 
 .clickable {
   cursor: pointer;
+}
+
+.exit-button:hover:before {
+  content: 'x';
+  color: white;
+  /* display: inline-block; */
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  margin-right: 5px;
+  font-size: 9px;
+  line-height: 15px;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
   text-align: center;
-  width: auto;
+  background: gray;
 }
 
 button {
@@ -124,22 +150,6 @@ input {
   margin: 20px;
 }
 
-.exit-button:hover:before {
-  content: 'x';
-  color: white;
-  /* display: inline-block; */
-  position: absolute;
-  top: 4px;
-  left: 43px;
-  margin-right: 5px;
-  font-size: 7px;
-  line-height: 10px;
-  height: 10px;
-  width: 10px;
-  border-radius: 10px;
-  text-align: center;
-  background: red;
-}
 
 .flex-center {
   display: flex;
