@@ -24,7 +24,7 @@ class Todo extends Component {
   }
 
   handleEnter = e => {
-    e.keyCode === 13 ? this.addToChores(this.state.newItem) : console.log('not enter');
+    e.keyCode === 13 ? this.addToChores(this.state.newItem) : null;
   }
   
   removeFromChores = item => {
@@ -57,6 +57,7 @@ class Todo extends Component {
   }
   
   handleChange = e => {
+    console.log(e.target.value)
     this.setState({
       newItem: e.target.value
     })
