@@ -62,63 +62,82 @@ class Todo extends Component {
       newItem: e.target.value
     })
   }
-
-  preventDefault = event => {
-    event.preventDefault();
-  }
   
   startDrag = event => {
-    console.log('hi', this.style)
-    console.log('event', event.target)
-    var data = {
-      chore: event.target
-    };
-    event.dataTransfer.setData('text', data);
+    event.dataTransfer.setData('text', event.target.dataset.value);
+    console.log('value: ', event.target.dataset.value);
+    event.dataTransfer.effectAllowed = 'move';
+  }
+  hoverOn = event => {
+    event.target.tagName === 'UL' ? event.target.classList.add('hover') : event.target.style.pointerEvents = 'none';
+  }
+  hoverOff = event => {
+    event.target.classList.remove('hover');
+  }
+  dragOver = event => {
+    event.dataTransfer.dropEffect = 'move';
+    event.preventDefault();
+  }
+  endDrag = event => {
+    event.target.parentNode.removeChild(event.target);
   }
 
-  dragEnter = event => {
-    event.target.classList.add('hover')
-  }
-  dragExit = event => {
-    event.target.classList.remove('hover')
+  enter = event => {
+    event.target.tagName === 'UL' ? event.target.classList.add('hover') : event.target.style.pointerEvents = 'none';
+    const items = event.dataTransfer.items;
+    for (var i = 0; i < items.length; ++i) {
+      if (items[i].kind == 'string' && items[i].type == 'text') {
+        event.preventDefault();
+        return;
+      }
+    }
   }
 
   drop = event => {
-    event.preventDefault();
-    var data;
-    try {
-      data = event.dataTransfer.getData('text');
-      console.log('data sent', data)
-    } catch (e) {
-      // If the text data isn't parsable we'll just ignore it.
-      console.log('ignored')
-      return;
-    }
+    const data = event.dataTransfer.getData('text');
+    const chore = document.createElement('li');
+    chore.textContent = data;
+
+    chore.setAttribute('data-value', data);
+    chore.setAttributeNS(null, 'class', 'clickable tasks exit-button');
+    chore.setAttribute('draggable', 'true');
+    chore.addEventListener('dragstart', this.startDrag);
+    chore.addEventListener('dragend', this.endDrag);
+    chore.addEventListener('click', () => this.removeFromChores(chore));
+
+    event.target.appendChild(chore);
+    console.log('content: ', chore.textContent)
   }
 
   render() {
     const todoList = this.state.chores.map( (chore, key) => {
-      return <li 
+      return <li
+        data-value={chore}
         key={key}
         className="clickable tasks exit-button"
         draggable='true'
         onDragStart={ this.startDrag }
+        onDragEnd={ this.endDrag }
         onClick={ () => this.moveToInProgress({chore}) }>{ chore }</li>
     })
     const inProgress = this.state.inProgress.map( (chore, key) => {
-      return <li 
+      return <li
+        data-value={chore}
         key={key}
         className="clickable tasks exit-button"
         draggable='true'
         onDragStart={ this.startDrag }
+        onDragEnd={ this.endDrag }
         onClick={ () => this.moveToDone({chore}) }>{ chore }</li>
     })
     const done = this.state.done.map( (chore, key) => {
-      return <li 
+      return <li
+        data-value={chore}
         key={key}
         className="clickable tasks exit-button"
         draggable='true'
         onDragStart={ this.startDrag }
+        onDragEnd={ this.endDrag }
         onClick={ () => this.removeFromChores({chore}) }>{ chore }</li>
     })
 
@@ -130,19 +149,24 @@ class Todo extends Component {
           <li className="todo-items"><strong>DONE</strong></li>
         </ul>
         <ul className="flex">
-          <ul className="todo-list todo-items" onDragEnter={ this.dragEnter } onDragLeave={ this.dragExit }>
+          <ul className="todo-list todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
             { todoList }
           </ul>
-          <ul className="in-progress todo-items" onDragEnter={ this.dragEnter } onDragLeave={ this.dragExit }>
+          <ul className="in-progress todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
             { inProgress }
           </ul>
-          <ul className="done todo-items" onDragEnter={ this.dragEnter } onDragLeave={ this.dragExit }>
+          <ul className="done todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
             { done }
           </ul>
         </ul>
-        <div className="tasks" onDragOver={this.preventDefault} onDrop={this.drop}>
+        {/* <div 
+          className="tasks"
+          onDragEnter={ this.enter }
+          onDragOver={ this.dragOver }
+          onDrop={ this.drop }
+          onDragLeave={ this.hoverOff }>
           Drop
-        </div>
+        </div> */}
         <input
           onChange={ this.handleChange }
           value={ this.state.newItem } 
