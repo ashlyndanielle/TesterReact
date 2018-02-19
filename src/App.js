@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Button from './Button.js';
-import PlayingWithState from './PlayingWithState/PlayingWithState.js';
+// import PlayingWithState from './PlayingWithState/PlayingWithState.js';
 import Todo from './PlayingWithProps/Todo.js';
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
           text={buttonName}
           color={this.state.backgroundColors[this.state.position]}
         />
-        <PlayingWithState />
+        {/* <PlayingWithState /> */}
         <Todo />
       </div>
     );

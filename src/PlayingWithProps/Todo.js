@@ -94,6 +94,7 @@ class Todo extends Component {
   }
 
   drop = event => {
+    console.log('The state in drop: ', this.state);
     const data = event.dataTransfer.getData('text');
     const chore = document.createElement('li');
     chore.textContent = data;
@@ -103,10 +104,18 @@ class Todo extends Component {
     chore.setAttribute('draggable', 'true');
     chore.addEventListener('dragstart', this.startDrag);
     chore.addEventListener('dragend', this.endDrag);
-    chore.addEventListener('click', () => this.removeFromChores(chore));
 
     event.target.appendChild(chore);
-    console.log('content: ', chore.textContent)
+    event.preventDefault();
+    // this.setState({
+    //   chores: this.state.chores.push('carrot')
+    // })
+    // if (event.target.id === 'todo-list') {
+    //   this.setState({
+    //     chores: this.state.chores.push(data)
+    //   })
+    // }
+    console.log('chores: ', this.state.chores)
   }
 
   render() {
@@ -149,13 +158,13 @@ class Todo extends Component {
           <li className="todo-items"><strong>DONE</strong></li>
         </ul>
         <ul className="flex">
-          <ul className="todo-list todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
+          <ul id="todo-list" className="todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
             { todoList }
           </ul>
-          <ul className="in-progress todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
+          <ul id="in-progress" className="todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
             { inProgress }
           </ul>
-          <ul className="done todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
+          <ul id="done" className="todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
             { done }
           </ul>
         </ul>
