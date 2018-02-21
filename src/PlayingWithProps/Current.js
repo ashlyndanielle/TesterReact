@@ -24,7 +24,7 @@ class Current extends Component {
         onDragOver={ this.props.dragOver }
         onDragLeave={ this.props.hoverOff }
         onDrop={ this.props.drop }>
-        { currentList }
+        { this.renderCurrentList() }
       </ul>
     );
   }

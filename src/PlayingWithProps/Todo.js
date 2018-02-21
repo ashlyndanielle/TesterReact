@@ -64,12 +64,12 @@ class Todo extends Component {
   
   startDrag = event => {
     event.dataTransfer.setData('text', event.target.dataset.value);
-    console.log('value: ', event.target.dataset.value);
     event.dataTransfer.effectAllowed = 'move';
   }
 
-  hoverOff = event => {
+  dragLeave = event => {
     event.target.classList.remove('hover');
+    console.log(event.target)
   }
 
   dragOver = event => {
@@ -78,7 +78,31 @@ class Todo extends Component {
   }
 
   endDrag = event => {
-    event.target.parentNode.removeChild(event.target);
+    switch (event.target.parentNode.id) {
+      case 'current':
+        this.setState({
+          chores: this.state.chores.filter( chore => {
+            return chore !== event.target.innerHTML
+          })
+        });
+        break;
+      case 'in-progress':
+        this.setState({
+          inProgress: this.state.inProgress.filter( chore => {
+            return chore !== event.target.innerHTML
+          })
+        });
+        break;
+      case 'done':
+        this.setState({
+          done: this.state.done.filter( chore => {
+            return chore !== event.target.innerHTML
+          })
+        });
+        break;
+      default:
+        null;
+    }
   }
 
   enter = event => {
@@ -94,15 +118,27 @@ class Todo extends Component {
 
   drop = event => {
     const data = event.dataTransfer.getData('text');
-    console.log('data: ', data)
-    console.log('target id: ', event.target.id)
-    event.preventDefault();
-    if (event.target.id === 'current') {
-      this.setState({
-        chores: this.state.chores.concat([data])
-      })
+    const children = event.target.children;
+    for ( let x = 0; x < children.length; x++ ) {
+      children[x].style.pointerEvents = 'auto';
     }
-    console.log('chores: ', this.state.chores)
+    event.preventDefault();
+    switch (event.target.id) {
+      case 'current':
+        this.setState({
+          chores: this.state.chores.concat([data])
+        });
+        break;
+      case 'in-progress':
+        this.setState({
+          inProgress: this.state.inProgress.concat([data])
+        });
+        break;
+      case 'done':
+        this.setState({
+          done: this.state.done.concat([data])
+        })
+    }
   }
 
   renderTodoList = () => {
@@ -162,7 +198,7 @@ class Todo extends Component {
             className="todo-items"
             onDragEnter={ this.enter }
             onDragOver={ this.dragOver }
-            onDragLeave={ this.hoverOff }
+            onDragLeave={ this.dragLeave }
             onDrop={ this.drop }>
             { this.renderTodoList() }
           </ul>
@@ -171,7 +207,7 @@ class Todo extends Component {
             className="todo-items"
             onDragEnter={ this.enter }
             onDragOver={ this.dragOver }
-            onDragLeave={ this.hoverOff }
+            onDragLeave={ this.dragLeave }
             onDrop={ this.drop }>
             { this.renderInProgress() }
           </ul>
@@ -180,7 +216,7 @@ class Todo extends Component {
             className="todo-items"
             onDragEnter={ this.enter }
             onDragOver={ this.dragOver }
-            onDragLeave={ this.hoverOff }
+            onDragLeave={ this.dragLeave }
             onDrop={ this.drop }>
             { this.renderDone() }
           </ul>
