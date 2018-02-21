@@ -78,6 +78,7 @@ class Todo extends Component {
   }
 
   endDrag = event => {
+    // try removing pointerEvents = 'none' here as well
     switch (event.target.parentNode.id) {
       case 'current':
         this.setState({

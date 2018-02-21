@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Button from './Button.js';
-// import PlayingWithState from './PlayingWithState/PlayingWithState.js';
-import Todo from './PlayingWithProps/Todo.js';
+import PlayingWithState from './PlayingWithState/PlayingWithState.js';
+import PlayingWithProps from './PlayingWithProps/PlayingWithProps.js';
+import Todo from './Todo/Todo.js';
 
 class App extends Component {
   constructor(props) {
@@ -21,12 +22,15 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h2>Second Round</h2>
-        <Button 
-          text={buttonName}
-          color={this.state.backgroundColors[this.state.position]}
-        />
-        {/* <PlayingWithState /> */}
+      <h2>Tester React App</h2>
+        <PlayingWithProps />
+        <div className="main-container">
+          <Button
+            text={buttonName}
+            color={this.state.backgroundColors[this.state.position]}
+          />
+        </div>
+        <PlayingWithState />
         <Todo />
       </div>
     );
