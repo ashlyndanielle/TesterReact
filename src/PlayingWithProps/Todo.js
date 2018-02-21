@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import Current from './Current.js';
-import InProgress from './InProgress.js';
-import Done from './Done.js';
 
 import Button from '../Button.js';
 
@@ -96,31 +93,19 @@ class Todo extends Component {
   }
 
   drop = event => {
-    console.log('The state in drop: ', this.state);
     const data = event.dataTransfer.getData('text');
-    // const chore = document.createElement('li');
-    // chore.textContent = data;
-
-    // chore.setAttribute('data-value', data);
-    // chore.setAttributeNS(null, 'class', 'clickable tasks exit-button');
-    // chore.setAttribute('draggable', 'true');
-    // chore.addEventListener('dragstart', this.startDrag);
-    // chore.addEventListener('dragend', this.endDrag);
-
-    // event.target.appendChild(chore);
+    console.log('data: ', data)
+    console.log('target id: ', event.target.id)
     event.preventDefault();
-    this.setState({
-      chores: this.state.chores.push('carrot')
-    })
     if (event.target.id === 'current') {
       this.setState({
-        chores: this.state.chores.push(data)
+        chores: this.state.chores.concat([data])
       })
     }
     console.log('chores: ', this.state.chores)
   }
 
-  render() {
+  renderTodoList = () => {
     const todoList = this.state.chores.map( (chore, key) => {
       return <li
         data-value={chore}
@@ -131,6 +116,10 @@ class Todo extends Component {
         onDragEnd={ this.endDrag }
         onClick={ () => this.moveToInProgress({chore}) }>{ chore }</li>
     })
+    return todoList;
+  }
+
+  renderInProgress = () => {
     const inProgress = this.state.inProgress.map( (chore, key) => {
       return <li
         data-value={chore}
@@ -141,6 +130,10 @@ class Todo extends Component {
         onDragEnd={ this.endDrag }
         onClick={ () => this.moveToDone({chore}) }>{ chore }</li>
     })
+    return inProgress;
+  }
+
+  renderDone = () => {
     const done = this.state.done.map( (chore, key) => {
       return <li
         data-value={chore}
@@ -151,6 +144,10 @@ class Todo extends Component {
         onDragEnd={ this.endDrag }
         onClick={ () => this.removeFromChores({chore}) }>{ chore }</li>
     })
+    return done;
+  }
+
+  render() {
 
     return (
       <div className="main-container">
@@ -161,13 +158,13 @@ class Todo extends Component {
         </ul>
         <ul className="flex">
           <ul 
-            id="todo-list"
+            id="current"
             className="todo-items"
             onDragEnter={ this.enter }
             onDragOver={ this.dragOver }
             onDragLeave={ this.hoverOff }
             onDrop={ this.drop }>
-            { todoList }
+            { this.renderTodoList() }
           </ul>
           <ul
             id="in-progress"
@@ -175,8 +172,8 @@ class Todo extends Component {
             onDragEnter={ this.enter }
             onDragOver={ this.dragOver }
             onDragLeave={ this.hoverOff }
-            onDrop={ this.drop.bind(this) }>
-            { inProgress }
+            onDrop={ this.drop }>
+            { this.renderInProgress() }
           </ul>
           <ul
             id="done"
@@ -184,8 +181,8 @@ class Todo extends Component {
             onDragEnter={ this.enter }
             onDragOver={ this.dragOver }
             onDragLeave={ this.hoverOff }
-            onDrop={ this.drop.bind(this) }>
-            { done }
+            onDrop={ this.drop }>
+            { this.renderDone() }
           </ul>
         </ul>
         <input

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 class Current extends Component {
-  render() {
+
+  renderCurrentList = () => {
     const currentList = this.props.chores.map( (chore, key) => {
       return <li
         data-value={chore}
@@ -12,6 +13,8 @@ class Current extends Component {
         onDragEnd={ this.props.endDrag }
         onClick={ () => this.props.moveToInProgress({chore}) }>{ chore }</li>
     })
+  }
+  render() {
 
     return (
       <ul
