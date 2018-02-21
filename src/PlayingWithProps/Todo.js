@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Current from './Current.js';
+import InProgress from './InProgress.js';
+import Done from './Done.js';
 
 import Button from '../Button.js';
 
@@ -13,7 +16,6 @@ class Todo extends Component {
       done: ['things']
     }
   }
-
 
 
   addToChores = (item, e) => {
@@ -68,16 +70,16 @@ class Todo extends Component {
     console.log('value: ', event.target.dataset.value);
     event.dataTransfer.effectAllowed = 'move';
   }
-  hoverOn = event => {
-    event.target.tagName === 'UL' ? event.target.classList.add('hover') : event.target.style.pointerEvents = 'none';
-  }
+
   hoverOff = event => {
     event.target.classList.remove('hover');
   }
+
   dragOver = event => {
     event.dataTransfer.dropEffect = 'move';
     event.preventDefault();
   }
+
   endDrag = event => {
     event.target.parentNode.removeChild(event.target);
   }
@@ -96,25 +98,25 @@ class Todo extends Component {
   drop = event => {
     console.log('The state in drop: ', this.state);
     const data = event.dataTransfer.getData('text');
-    const chore = document.createElement('li');
-    chore.textContent = data;
+    // const chore = document.createElement('li');
+    // chore.textContent = data;
 
-    chore.setAttribute('data-value', data);
-    chore.setAttributeNS(null, 'class', 'clickable tasks exit-button');
-    chore.setAttribute('draggable', 'true');
-    chore.addEventListener('dragstart', this.startDrag);
-    chore.addEventListener('dragend', this.endDrag);
+    // chore.setAttribute('data-value', data);
+    // chore.setAttributeNS(null, 'class', 'clickable tasks exit-button');
+    // chore.setAttribute('draggable', 'true');
+    // chore.addEventListener('dragstart', this.startDrag);
+    // chore.addEventListener('dragend', this.endDrag);
 
-    event.target.appendChild(chore);
+    // event.target.appendChild(chore);
     event.preventDefault();
-    // this.setState({
-    //   chores: this.state.chores.push('carrot')
-    // })
-    // if (event.target.id === 'todo-list') {
-    //   this.setState({
-    //     chores: this.state.chores.push(data)
-    //   })
-    // }
+    this.setState({
+      chores: this.state.chores.push('carrot')
+    })
+    if (event.target.id === 'current') {
+      this.setState({
+        chores: this.state.chores.push(data)
+      })
+    }
     console.log('chores: ', this.state.chores)
   }
 
@@ -158,24 +160,34 @@ class Todo extends Component {
           <li className="todo-items"><strong>DONE</strong></li>
         </ul>
         <ul className="flex">
-          <ul id="todo-list" className="todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
+          <ul 
+            id="todo-list"
+            className="todo-items"
+            onDragEnter={ this.enter }
+            onDragOver={ this.dragOver }
+            onDragLeave={ this.hoverOff }
+            onDrop={ this.drop }>
             { todoList }
           </ul>
-          <ul id="in-progress" className="todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
+          <ul
+            id="in-progress"
+            className="todo-items"
+            onDragEnter={ this.enter }
+            onDragOver={ this.dragOver }
+            onDragLeave={ this.hoverOff }
+            onDrop={ this.drop.bind(this) }>
             { inProgress }
           </ul>
-          <ul id="done" className="todo-items" onDragEnter={ this.enter } onDragOver={ this.dragOver } onDragLeave={ this.hoverOff } onDrop={ this.drop }>
+          <ul
+            id="done"
+            className="todo-items"
+            onDragEnter={ this.enter }
+            onDragOver={ this.dragOver }
+            onDragLeave={ this.hoverOff }
+            onDrop={ this.drop.bind(this) }>
             { done }
           </ul>
         </ul>
-        {/* <div 
-          className="tasks"
-          onDragEnter={ this.enter }
-          onDragOver={ this.dragOver }
-          onDrop={ this.drop }
-          onDragLeave={ this.hoverOff }>
-          Drop
-        </div> */}
         <input
           onChange={ this.handleChange }
           value={ this.state.newItem } 
