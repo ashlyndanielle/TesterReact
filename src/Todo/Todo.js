@@ -28,7 +28,7 @@ class Todo extends Component {
   
   removeFromChores = item => {
     const done = this.state.done
-    const itemIndex = this.state.done.indexOf(item.chore);
+    const itemIndex = done.indexOf(item.chore);
     done.splice(itemIndex, 1)
     this.setState({
       done
