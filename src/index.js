@@ -8,6 +8,7 @@ import './App.css';
 import App from './App';
 import About from './About';
 import Store from './Store';
+import Product from './Product/Product';
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Route exact path="/" component={ App }/>
       <Route path="/about" component={ About }/>
       <Route path="/store" component={ Store }/>
+      <Route path="/product/:id" component={ Product }/>
     </Switch>
   </Router>,
   document.getElementById('root'));

@@ -23,17 +23,17 @@ class App extends Component {
 
     return (
       <div className="App">
-      <h2>Tester React App</h2>
-      <HttpRequest />  
-      <PlayingWithProps />
-      <div className="main-container">
-        <Button
-          text={buttonName}
-          color={this.state.backgroundColors[this.state.position]}
-        />
-      </div>
-      <PlayingWithState />
-      <Todo />
+        <h2>Tester React App</h2>
+        <HttpRequest />  
+        <PlayingWithProps />
+        <div className="main-container">
+          <Button
+            text={buttonName}
+            color={this.state.backgroundColors[this.state.position]}
+          />
+        </div>
+        <PlayingWithState />
+        <Todo />
       </div>
     );
   }

@@ -80,6 +80,7 @@ h2 {
 .flex {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .spacer {
@@ -211,6 +212,15 @@ input {
   justify-content: center;
 }
 
+.buffer {
+  height: 50vh;
+  width: 100vw;
+}
+
+.product-image {
+  height: 200px;
+  width: auto;
+}
 
 
 
