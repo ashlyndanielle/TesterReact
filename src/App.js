@@ -6,6 +6,7 @@ import PlayingWithState from './PlayingWithState/PlayingWithState.js';
 import PlayingWithProps from './PlayingWithProps/PlayingWithProps.js';
 import Todo from './Todo/Todo.js';
 import HttpRequest from './HttpRequest/HttpRequest.js';
+import SkiEssentials from './SkiEssentials/SkiEssentials';
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <h2>Tester React App</h2>
+        <SkiEssentials />
         <HttpRequest />  
         <PlayingWithProps />
         <div className="main-container">
