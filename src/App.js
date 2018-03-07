@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Button from './Button.js';
-import PlayingWithState from './PlayingWithState/PlayingWithState.js';
+// import PlayingWithState from './PlayingWithState/PlayingWithState.js';
 import PlayingWithProps from './PlayingWithProps/PlayingWithProps.js';
 import Todo from './Todo/Todo.js';
 import HttpRequest from './HttpRequest/HttpRequest.js';
@@ -24,17 +24,16 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h2>Tester React App</h2>
         <SkiEssentials />
         <HttpRequest />  
         <PlayingWithProps />
-        <div className="main-container">
+        {/* <div className="main-container">
           <Button
             text={buttonName}
             color={this.state.backgroundColors[this.state.position]}
           />
         </div>
-        <PlayingWithState />
+        <PlayingWithState /> */}
         <Todo />
       </div>
     );

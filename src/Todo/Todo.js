@@ -188,6 +188,14 @@ class Todo extends Component {
 
     return (
       <div className="main-container">
+        <input
+          onChange={ this.handleChange }
+          value={ this.state.newItem } 
+          onKeyDown={ this.handleEnter } />
+        <Button
+          text="add a new chore"
+          handleClick={ () => this.addToChores(this.state.newItem) }
+        />
         <ul className="flex">
           <li className="todo-items"><strong>TODO</strong></li>
           <li className="todo-items"><strong>IN PROGRESS</strong></li>
@@ -222,14 +230,7 @@ class Todo extends Component {
             { this.renderDone() }
           </ul>
         </ul>
-        <input
-          onChange={ this.handleChange }
-          value={ this.state.newItem } 
-          onKeyDown={ this.handleEnter } />
-        <Button
-          text="add a new chore"
-          handleClick={ () => this.addToChores(this.state.newItem) }
-        />
+
       </div>
     );
   }

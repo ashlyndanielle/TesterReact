@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+  color: var(--blue);
+  font-family: "Lucida Sans Unicode";
+}
+
+th,
+td {
+  border: 0.5px solid var(--blue);
+  padding: 20px;
+}
+
+
+tr:first-child th {
+  border: none;
+}
+
+th {
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  background: linear-gradient(to bottom, #4e7a94 0%, #5584a0 15%, var(--blue) 50%, #5584a0 85%, #4e7a94 100%);
+  color: var(--beige);
+}
+
+tr:first-child td {
+  border-top: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+td:first-child {
+  border-left: none;
+}
+
+td:last-child {
+  border-right: none;
+}
+

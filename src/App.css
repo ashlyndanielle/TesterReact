@@ -1,3 +1,11 @@
+:root {
+  --beige: #fbeec1;
+  --blue: #659dbd;
+  --green: #8d8741;
+  --brown: #bc986a;
+  --peach: #daad86;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,22 +56,22 @@ table {
 
 .App {
   text-align: center;
-  background: lightblue;
-  margin: 10px;
+  background: var(--blue);
   padding: 10px;
+  color: var(--green);
 }
 
 .main-container {
-  margin: 10px;
+  margin: 5px;
   padding: 20px;
 }
 
 .main-container:nth-child(even) {
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--beige);
 }
 
 .main-container:nth-child(odd) {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--beige);
 }
 
 li {
@@ -114,7 +122,7 @@ h2 {
 
 .exit-button:hover:before {
   content: 'x';
-  color: white;
+  color: #659dbd;
   /* display: inline-block; */
   position: absolute;
   top: 5px;
@@ -131,10 +139,11 @@ h2 {
 
 button {
   padding: 10px;
-  background: DarkCyan;
-  color: white;
+  background: var(--blue);
+  color: var(--beige);
   text-transform: uppercase;
   border-style: none;
+  border-radius: 2px;
   outline: none;
   cursor: pointer;
   position: relative;
@@ -162,7 +171,10 @@ button:before {
 
 button:focus {
   outline: 0;
-  color: #fff;
+}
+
+button:hover {
+  box-shadow: inset 0px 0px 4px 0.5px #344955ab;
 }
 
 button:focus:before {
