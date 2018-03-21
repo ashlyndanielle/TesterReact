@@ -19,7 +19,7 @@ class HttpRequest extends Component {
   render() {
     const { luke } = this.state;
     return (
-      <div className="main-container">
+      <div className="main-container cherry">
         <h4>HTTP</h4>
         <br/>
         <p><strong>Name: </strong>{ luke.name }</p>

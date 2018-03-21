@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Bevan|Pacifico|Cherry+Swash|Vesper+Libre');
+
 :root {
   --beige: #fbeec1;
   --blue: #659dbd;
@@ -234,6 +236,9 @@ input {
   width: auto;
 }
 
+.cherry {
+  font-family: 'cherry swash';
+}
 
 
 

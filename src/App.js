@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Button from './Button.js';
-// import PlayingWithState from './PlayingWithState/PlayingWithState.js';
+import PlayingWithState from './PlayingWithState/PlayingWithState.js';
 import PlayingWithProps from './PlayingWithProps/PlayingWithProps.js';
 import Todo from './Todo/Todo.js';
 import HttpRequest from './HttpRequest/HttpRequest.js';
-import SkiEssentials from './SkiEssentials/SkiEssentials';
+// import SkiEssentials from './SkiEssentials/SkiEssentials';
 
 class App extends Component {
   constructor(props) {
@@ -24,20 +24,21 @@ class App extends Component {
 
     return (
       <div className="App">
-        <SkiEssentials />
+        {/* <SkiEssentials /> */}
         <HttpRequest />  
         <PlayingWithProps />
-        {/* <div className="main-container">
+        <div className="main-container">
           <Button
             text={buttonName}
             color={this.state.backgroundColors[this.state.position]}
           />
         </div>
-        <PlayingWithState /> */}
+        <PlayingWithState />
         <Todo />
       </div>
     );
   }
 }
+
 
 export default App;
